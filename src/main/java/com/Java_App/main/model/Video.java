@@ -1,9 +1,16 @@
 package com.Java_App.main.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
+@Table(name = "video")
 public class Video {
+	@Id
 	private int id;
 	private String title;
 

@@ -2,19 +2,27 @@ package com.Java_App.main.model;
 
 import javax.persistence.Entity;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
+@Table(name = "audio")
 public class Audio {
+	@Id
 	private int id;
-	private String title;
+	private String filePath;
 
 	public Audio() {
 		super();
 	}
 
-	public Audio(int id, String title) {
+	public Audio(int id, String filePath) {
 		super();
 		this.id = id;
-		this.title = title;
+		this.filePath = filePath;
 	}
 
 	public int getId() {
@@ -25,12 +33,12 @@ public class Audio {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getFilePath() {
+		return filePath;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 }
