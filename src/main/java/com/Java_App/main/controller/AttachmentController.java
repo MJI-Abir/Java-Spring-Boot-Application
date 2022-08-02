@@ -65,6 +65,6 @@ public class AttachmentController {
     	Attachment attachment = null;
     	attachmentService.editAttachment(videoFileId, audioFileId);
     	
-    	return audioFileId;
+    	return "Video edited successfully!";
     }
 }
