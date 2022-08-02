@@ -10,7 +10,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Attachment {
 	
-
 	@Id
 	@GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")

@@ -10,4 +10,6 @@ public interface AttachmentService {
 
 	Attachment getAttachment(String fileId) throws Exception;
 
+	void editAttachment(String videoFileId, String audioFileId) throws Exception;
+
 }

@@ -1,5 +1,9 @@
 package com.Java_App.main.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +40,23 @@ public class AttachmentServiceImpl implements AttachmentService {
 	public Attachment getAttachment(String fileId) throws Exception {
 		return attachmentRepository.findById(fileId).orElseThrow
 				(() -> new Exception("File not found by ID :" + fileId));
+	}
+
+	@Override
+	public void editAttachment(String videoFileId, String audioFileId) throws IOException {
+		Optional<Attachment> audioFile = attachmentRepository.findById(audioFileId);
+		Optional<Attachment> videoFile = attachmentRepository.findById(videoFileId);
+		
+		String audioFileName = audioFile.get().getFileName();
+		String videoFileName = videoFile.get().getFileName();
+		
+		String editedFileName = "output.mp4";
+		Runtime rt = Runtime.getRuntime();
+		
+		rt.exec("cmd.exe/c start" + "ffmpeg -i " + videoFileName + " -i "
+		+ audioFileName +" -c:v copy -c:a aac " + editedFileName);
+		
+		
 	}
 
 }

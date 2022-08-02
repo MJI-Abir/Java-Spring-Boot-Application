@@ -41,7 +41,8 @@ public class AttachmentController {
                 .path(attachment.getId())
                 .toUriString();
 
-        return new ResponseData(attachment.getFileName(),
+        return new ResponseData(attachment.getId(),
+        		attachment.getFileName(),
                 downloadURl,
                 file.getContentType(),
                 file.getSize());
@@ -57,5 +58,13 @@ public class AttachmentController {
                         "attachment; filename=\"" + attachment.getFileName()
                 + "\"")
                 .body(new ByteArrayResource(attachment.getData()));
+    }
+    
+    @PostMapping("/replace/{videoFileId}/{audioFileId}")
+    public String editFile(@PathVariable() String videoFileId, @PathVariable String audioFileId) throws Exception{
+    	Attachment attachment = null;
+    	attachmentService.editAttachment(videoFileId, audioFileId);
+    	
+    	return audioFileId;
     }
 }
