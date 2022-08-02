@@ -60,7 +60,7 @@ public class AttachmentController {
                 .body(new ByteArrayResource(attachment.getData()));
     }
     
-    @PostMapping("/replace/{videoFileId}/{audioFileId}")
+    @PostMapping("/edit/{videoFileId}/{audioFileId}")
     public String editFile(@PathVariable() String videoFileId, @PathVariable String audioFileId) throws Exception{
     	Attachment attachment = null;
     	attachmentService.editAttachment(videoFileId, audioFileId);
